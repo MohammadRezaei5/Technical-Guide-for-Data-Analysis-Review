@@ -1,0 +1,1169 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>گزارش بازخورد حرفه‌ای نقد پروژه تحلیل داده بیمه</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%232563eb' d='M16 3 27 7v7.5C27 21.2 22.5 26.7 16 29 9.5 26.7 5 21.2 5 14.5V7z'/%3E%3Cpath d='m10.5 15.5 3.7 3.5 7.3-7.5' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <!-- font -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              executive: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+              accent: {
+                teal: "#0d9488",
+                emerald: "#10b981",
+                amber: "#f59e0b",
+                rose: "#e11d48",
+                sky: "#0284c7",
+              },
+            },
+            fontFamily: {
+              vazir: ["Vazirmatn", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --bg-page: #f8fafc;
+        --card-bg: #ffffff;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --border-color: #e2e8f0;
+        --code-bg: #0b1329;
+        --code-text: #e2e8f0;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Vazirmatn", sans-serif;
+        font-feature-settings: "ss01";
+      }
+      body {
+        background-color: var(--bg-page);
+        color: var(--text-primary);
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+      }
+      .glass-header {
+        background: rgba(15, 23, 42, 0.95);
+      }
+      .card-shadow {
+        box-shadow:
+          0 10px 30px -5px rgba(15, 23, 42, 0.05),
+          0 4px 12px -2px rgba(15, 23, 42, 0.03);
+      }
+      .score-gradient {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      .pipeline-node {
+        transition: transform 0.125s ease;
+      }
+      .pipeline-node:hover {
+        transform: translateY(-2px);
+      }
+      pre,
+      code,
+      .font-code {
+        direction: ltr !important;
+        text-align: left !important;
+        unicode-bidi: isolate;
+      }
+      code {
+        display: inline-block;
+      }
+      pre code {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header
+      class="glass-header text-white sticky top-0 z-50 border-b-2 border-amber-500 shadow-lg"
+    >
+      <div
+        class="max-w-5xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4"
+      >
+        <div class="flex items-center space-x-3 space-x-reverse">
+          <div>
+            <h1
+              class="text-lg md:text-xl font-black text-slate-50 tracking-wide"
+            >
+              گزارش نقد تخصصی و ارزیابی پروژه داده
+            </h1>
+            <p class="text-xs text-slate-400">
+              تحلیل فنی و اکچوئری نوت‌بوک ریسک پورتفوی خسارت بیمه
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs md:text-sm">
+          <div
+            class="bg-slate-800/80 border border-slate-700 px-3.5 py-1.5 rounded-lg flex items-center gap-2"
+          >
+            <span class="text-slate-400">منتقد:</span>
+            <span class="font-bold text-teal-400">محمد رضائی</span>
+          </div>
+          <div
+            class="bg-slate-800/80 border border-slate-700 px-3.5 py-1.5 rounded-lg flex items-center gap-2"
+          >
+            <span class="text-slate-400">سازنده پروژه:</span>
+            <span class="font-bold text-amber-400">علی خان‌بیگی</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-5xl w-full mx-auto px-4 py-8 flex-1">
+      <main class="space-y-8">
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow"
+        >
+          <!-- Hero Score Container -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8 items-stretch"
+          >
+            <!-- Score Badge -->
+            <div
+              class="md:col-span-4 score-gradient rounded-xl p-6 text-center text-white flex flex-col justify-center items-center border border-slate-700 shadow-md"
+            >
+              <span
+                class="text-xs uppercase tracking-widest text-slate-400 mb-1 font-semibold"
+                >امتیاز نهایی ارزیابی</span
+              >
+              <div
+                class="text-5xl font-black text-amber-400 my-2 tracking-tight"
+              >
+                91 <span class="text-lg text-slate-400 font-normal">/ 100</span>
+              </div>
+              <span
+                class="inline-block mt-2 px-4 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full text-xs font-bold"
+              >
+                سطح پروژه: بسیار خوب
+              </span>
+            </div>
+
+            <!-- Key Insights Summary Boxes -->
+            <div class="md:col-span-8 flex flex-col gap-3 justify-center">
+              <div
+                class="p-4 bg-emerald-50/70 border-r-4 border-emerald-500 rounded-xl text-xs md:text-sm text-emerald-950"
+              >
+                <strong class="font-black text-emerald-800 block mb-1"
+                  >مهم‌ترین نقطه قوت:</strong
+                >
+                طراحی صحیح Pipeline تحلیل داده و اعتبارسنجی حرفه‌ای Merge با
+                استفاده از <code>validate="one_to_one"</code> و
+                <code>indicator=True</code> در پانداس جهت جلوگیری از بروز خطاهای
+                پنهان.
+              </div>
+              <div
+                class="p-4 bg-rose-50/70 border-r-4 border-rose-500 rounded-xl text-xs md:text-sm text-rose-950"
+              >
+                <strong class="font-black text-rose-800 block mb-1"
+                  >مهم‌ترین ایراد:</strong
+                >
+                تکرار زیاد کدها، ماژولار نبودن نوت‌بوک و تکرار ساختار کدهای
+                سگمنت بدون تعریف توابع Reusable جهت رعایت اصل DRY.
+              </div>
+            </div>
+          </div>
+          <h3
+            class="text-base font-bold text-slate-800 mb-3 flex items-center gap-2"
+          >
+            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+            جدول تفکیکی امتیازات پروژه
+          </h3>
+          <div
+            class="overflow-x-auto rounded-xl border border-slate-200 mb-6 shadow-sm"
+          >
+            <table class="w-full text-right text-xs md:text-sm">
+              <thead class="bg-slate-900 text-slate-100">
+                <tr>
+                  <th class="p-3.5 font-bold">معیار ارزیابی</th>
+                  <th class="p-3.5 font-bold text-center">امتیاز کسب‌شده</th>
+                  <th class="p-3.5 font-bold text-center">سقف امتیاز</th>
+                  <th class="p-3.5 font-bold">ارزیابی کیفی</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 bg-white">
+                <tr class="hover:bg-slate-50/80">
+                  <td class="p-3.5 font-semibold text-slate-800">
+                    ساختار پروژه
+                  </td>
+                  <td class="p-3.5 text-center font-bold text-slate-900">10</td>
+                  <td class="p-3.5 text-center text-slate-500">10</td>
+                  <td class="p-3.5">
+                    <span
+                      class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md"
+                      >عالی</span
+                    >
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80">
+                  <td class="p-3.5 font-semibold text-slate-800">
+                    کیفیت کدنویسی پایتون
+                  </td>
+                  <td class="p-3.5 text-center font-bold text-slate-900">17</td>
+                  <td class="p-3.5 text-center text-slate-500">20</td>
+                  <td class="p-3.5">
+                    <span
+                      class="px-2.5 py-1 bg-teal-100 text-teal-800 text-xs font-bold rounded-md"
+                      >خوب</span
+                    >
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80">
+                  <td class="p-3.5 font-semibold text-slate-800">
+                    پاکسازی و کیفیت داده
+                  </td>
+                  <td class="p-3.5 text-center font-bold text-slate-900">19</td>
+                  <td class="p-3.5 text-center text-slate-500">20</td>
+                  <td class="p-3.5">
+                    <span
+                      class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md"
+                      >عالی</span
+                    >
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80">
+                  <td class="p-3.5 font-semibold text-slate-800">
+                    تحلیل اکتشافی داده‌ها (EDA)
+                  </td>
+                  <td class="p-3.5 text-center font-bold text-slate-900">18</td>
+                  <td class="p-3.5 text-center text-slate-500">20</td>
+                  <td class="p-3.5">
+                    <span
+                      class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md"
+                      >عالی</span
+                    >
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80">
+                  <td class="p-3.5 font-semibold text-slate-800">
+                    مصورسازی و نمودارها
+                  </td>
+                  <td class="p-3.5 text-center font-bold text-slate-900">13</td>
+                  <td class="p-3.5 text-center text-slate-500">15</td>
+                  <td class="p-3.5">
+                    <span
+                      class="px-2.5 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md"
+                      >نیازمند اصلاح</span
+                    >
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80">
+                  <td class="p-3.5 font-semibold text-slate-800">
+                    Insight و نتیجه‌گیری
+                  </td>
+                  <td class="p-3.5 text-center font-bold text-slate-900">14</td>
+                  <td class="p-3.5 text-center text-slate-500">15</td>
+                  <td class="p-3.5">
+                    <span
+                      class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md"
+                      >عالی</span
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="bg-slate-100/80 font-black border-t-2 border-slate-300"
+                >
+                  <td class="p-3.5 text-slate-900">امتیاز کل</td>
+                  <td class="p-3.5 text-center text-amber-600 text-lg">91</td>
+                  <td class="p-3.5 text-center text-slate-600">100</td>
+                  <td class="p-3.5">
+                    <span
+                      class="px-3 py-1 bg-emerald-600 text-white text-xs font-black rounded-md shadow-sm"
+                      >بسیار خوب</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow space-y-6"
+        >
+          <h2
+            class="text-xl font-black text-slate-900 border-b border-slate-200 pb-3 flex items-center gap-2"
+          >
+            <span class="w-3 h-3 rounded-full bg-teal-600"></span>
+            نقاط قوت کلیدی و پیشنهادهای اصلاحی
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+              class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3"
+            >
+              <h3
+                class="font-bold text-teal-800 text-sm flex items-center gap-2"
+              >
+                <svg
+                  class="w-5 h-5 text-teal-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                نقاط قوت برجسته پروژه
+              </h3>
+              <ul
+                class="space-y-2 text-xs md:text-sm text-slate-700 list-disc list-inside"
+              >
+                <li>
+                  ساختار پروژه کاملاً منطقی و توالی مراحل کاملاً استاندارد است.
+                </li>
+                <li>
+                  ادغام صحیح دیتاست‌ها با <code>groupby</code> +
+                  <code>merge(validate="one_to_one")</code>.
+                </li>
+                <li>حفظ هوشمندانه Outliers به عنوان اصل ریسک اکچوئری بیمه.</li>
+                <li>محاسبه دقیق KPIها بر مبنای Exposure (میزان مواجهه).</li>
+                <li>
+                  مستندسازی دقیق محدودیت‌ها (Limitations) و پرهیز از ادعای علیت.
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3"
+            >
+              <h3
+                class="font-bold text-rose-800 text-sm flex items-center gap-2"
+              >
+                <svg
+                  class="w-5 h-5 text-rose-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  ></path>
+                </svg>
+                نقاط نیازمند بهبود و اصلاح
+              </h3>
+              <ul
+                class="space-y-2 text-xs md:text-sm text-slate-700 list-disc list-inside"
+              >
+                <li>تکرار چندباره کدهای ساخت سگمنت بدون تعریف تابع.</li>
+                <li>
+                  مسیرهای فایلی هاردکد شده (وابسته به مسیرهای
+                  <code>D:\...</code>).
+                </li>
+                <li>وجود یک باگ ارجاع متغیر در نمودار هزینه‌ای Region.</li>
+                <li>عدم رسم نمودار Boxplot جهت نمایش بصری توزیع چوله خسارت.</li>
+                <li>
+                  استفاده از پالت رنگی پیش‌فرض به جای Palette ثابت و یکپارچه.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Issues Table -->
+          <h3 class="font-bold text-slate-800 text-sm pt-2">
+            جدول تفکیکی مشکلات و پیشنهادهای عملی
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-right text-xs md:text-sm">
+              <thead class="bg-slate-900 text-white">
+                <tr>
+                  <th class="p-3">بخش</th>
+                  <th class="p-3">مشکل شناسایی‌شده</th>
+                  <th class="p-3">پیشنهاد اصلاحی</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 bg-white">
+                <tr>
+                  <td class="p-3 font-semibold text-slate-800">کدنویسی</td>
+                  <td class="p-3 text-rose-700">تکرار زیاد groupby</td>
+                  <td class="p-3 text-slate-700">
+                    تعریف یک تابع عمومی مانند <code>create_summary()</code>
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="p-3 font-semibold text-slate-800">کدنویسی</td>
+                  <td class="p-3 text-rose-700">
+                    مسیرهای هاردکد شده <code>D:\...</code>
+                  </td>
+                  <td class="p-3 text-slate-700">
+                    استفاده از کتابخانه <code>pathlib.Path</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-slate-800">EDA</td>
+                  <td class="p-3 text-rose-700">عدم وجود Correlation Matrix</td>
+                  <td class="p-3 text-slate-700">
+                    افزودن ماتریس همبستگی متغیرهای عددی
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="p-3 font-semibold text-slate-800">
+                    Visualization
+                  </td>
+                  <td class="p-3 text-rose-700">
+                    یکسان بودن پالت رنگی نمودارها
+                  </td>
+                  <td class="p-3 text-slate-700">
+                    تعریف Palette ثابت مثل <code>Blues_r</code> یا
+                    <code>crest</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-slate-800">
+                    Visualization
+                  </td>
+                  <td class="p-3 text-rose-700">
+                    باگ دیتافریم در نمودار Region
+                  </td>
+                  <td class="p-3 text-slate-700">
+                    جایگزینی <code>region_cost</code> به جای
+                    <code>region_frequency</code>
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="p-3 font-semibold text-slate-800">
+                    Visualization
+                  </td>
+                  <td class="p-3 text-rose-700">
+                    خط Portfolio Average نامناسب
+                  </td>
+                  <td class="p-3 text-slate-700">
+                    استفاده از میانگین KPI همان سگمنت یا میانگین هموزن
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-slate-800">Insight</td>
+                  <td class="p-3 text-rose-700">
+                    عدم اشاره صریح به میزان عدم قطعیت
+                  </td>
+                  <td class="p-3 text-slate-700">
+                    تأکید کامل در متن بر توصیفی (Descriptive) بودن تحلیل
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow space-y-4"
+        >
+          <div
+            class="flex justify-between items-center border-b border-slate-200 pb-3"
+          >
+            <h2
+              class="text-lg font-black text-slate-900 flex items-center gap-2"
+            >
+              <span class="w-3 h-3 rounded-full bg-teal-600"></span>
+              ۱. بررسی ساختار پروژه (10 / 10)
+            </h2>
+            <span
+              class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md"
+              >کاملاً کامل</span
+            >
+          </div>
+          <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
+            توالی گام‌های اجرا شده در نوت‌بوک کاملاً منطبق بر استاندارد
+            پروژه‌های تحلیلی صنعت بیمه است:
+          </p>
+
+          <!-- Step Pipeline Flowchart -->
+          <div
+            class="p-4 bg-slate-900 rounded-xl border border-slate-800 overflow-x-auto"
+          >
+            <div class="flex items-center justify-between min-w-[750px] gap-2">
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                Load Data
+              </div>
+              <span class="text-amber-500 font-bold">←</span>
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                Data Understanding
+              </div>
+              <span class="text-amber-500 font-bold">←</span>
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                Quality Check
+              </div>
+              <span class="text-amber-500 font-bold">←</span>
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                Severity Aggregation
+              </div>
+              <span class="text-amber-500 font-bold">←</span>
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                Merge + Validation
+              </div>
+              <span class="text-amber-500 font-bold">←</span>
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                Portfolio KPI
+              </div>
+              <span class="text-amber-500 font-bold">←</span>
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                EDA + Segments
+              </div>
+              <span class="text-amber-500 font-bold">←</span>
+              <div
+                class="pipeline-node bg-slate-800 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold border border-slate-700 text-center"
+              >
+                Insights + Export
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow space-y-6"
+        >
+          <div
+            class="flex justify-between items-center border-b border-slate-200 pb-3"
+          >
+            <h2
+              class="text-lg font-black text-slate-900 flex items-center gap-2"
+            >
+              <span class="w-3 h-3 rounded-full bg-teal-600"></span>
+              ۲. بررسی کیفیت کدنویسی پایتون (17 / 20)
+            </h2>
+            <span
+              class="px-2.5 py-1 bg-teal-100 text-teal-800 text-xs font-bold rounded-md"
+              >خوب</span
+            >
+          </div>
+
+          <!-- Strengths -->
+          <div>
+            <h3 class="font-bold text-slate-800 text-sm mb-2">
+              نقاط قوت کدنویسی:
+            </h3>
+            <p class="text-xs md:text-sm text-slate-700 mb-3">
+              نام‌گذاری متغیرها مانند <code>portfolio</code>,
+              <code>region_summary</code>, <code>claim_frequency</code> و
+              <code>average_claim_severity</code> کاملاً استاندارد است. همچنین
+              ادغام دو دیتاست با اعتبارسنجی یک به یک صورت گرفته است:
+            </p>
+
+            <!-- Code Snippet 1 -->
+            <div
+              class="rounded-xl overflow-hidden border border-slate-800 bg-[var(--code-bg)] shadow-md text-left"
+              dir="ltr"
+            >
+              <div
+                class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs text-slate-400 font-code"
+              >
+                <span class="font-code text-slate-300"
+                  >python - Merge Validation</span
+                >
+                <button
+                  onclick="copyCode(this)"
+                  class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded font-vazir text-xs font-bold transition-all"
+                >
+                  کپی کد
+                </button>
+              </div>
+              <pre
+                class="p-4 text-xs md:text-sm font-code text-slate-200 overflow-x-auto text-left"
+                dir="ltr"
+              ><code class="text-left font-code" dir="ltr">portfolio = freq.merge(
+    sev_policy,
+    on="IDpol",
+    how="left",
+    validate="one_to_one",
+    indicator=True
+)</code></pre>
+            </div>
+          </div>
+
+          <!-- Weaknesses & Refactoring -->
+          <div class="space-y-4">
+            <h3 class="font-bold text-slate-800 text-sm">
+              نقاط ضعف و پیشنهادهای بازنویسی:
+            </h3>
+
+            <!-- Refactor 1 -->
+            <div class="space-y-2">
+              <p class="text-xs md:text-sm text-slate-700">
+                <strong>۱. تکرار ساختار GroupBy:</strong> برای ۴ سگمنت به صورت
+                تکراری کدهای طولانی نوشته شده است. با تعریف تابع Reusable بیش از
+                ۷۰ خط کد حذف می‌شود:
+              </p>
+              <div
+                class="rounded-xl overflow-hidden border border-slate-800 bg-[var(--code-bg)] shadow-md text-left"
+                dir="ltr"
+              >
+                <div
+                  class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs text-slate-400 font-code"
+                >
+                  <span class="font-code text-slate-300"
+                    >python - Reusable Summary Function</span
+                  >
+                  <button
+                    onclick="copyCode(this)"
+                    class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded font-vazir text-xs font-bold transition-all"
+                  >
+                    کپی کد
+                  </button>
+                </div>
+                <pre
+                  class="p-4 text-xs md:text-sm font-code text-slate-200 overflow-x-auto text-left"
+                  dir="ltr"
+                ><code class="text-left font-code" dir="ltr">def create_summary(df, group_col):
+    return (
+        df.groupby(group_col, observed=True)
+          .agg(
+              Total_Exposure=("Exposure", "sum"),
+              Total_Claims=("ClaimNb", "sum"),
+              Total_Cost=("ClaimAmount", "sum")
+          )
+          .reset_index()
+    )</code></pre>
+              </div>
+            </div>
+
+            <!-- Refactor 2 -->
+            <div class="space-y-2">
+              <p class="text-xs md:text-sm text-slate-700">
+                <strong>۲. مدیریت پورتابل مسیر فایل‌ها:</strong> جایگزینی
+                مسیرهای هاردکد شده <code>"D:\\projects\\..."</code> با
+                <code>pathlib.Path</code>:
+              </p>
+              <div
+                class="rounded-xl overflow-hidden border border-slate-800 bg-[var(--code-bg)] shadow-md text-left"
+                dir="ltr"
+              >
+                <div
+                  class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs text-slate-400 font-code"
+                >
+                  <span class="font-code text-slate-300"
+                    >python - Pathlib Implementation</span
+                  >
+                  <button
+                    onclick="copyCode(this)"
+                    class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded font-vazir text-xs font-bold transition-all"
+                  >
+                    کپی کد
+                  </button>
+                </div>
+                <pre
+                  class="p-4 text-xs md:text-sm font-code text-slate-200 overflow-x-auto text-left"
+                  dir="ltr"
+                ><code class="text-left font-code" dir="ltr">from pathlib import Path
+
+BASE_DIR = Path("D:/projects/studybuild-project 3-insurance")
+freq = pd.read_csv(BASE_DIR / "csv" / "freMTPL2freq.csv")</code></pre>
+              </div>
+            </div>
+
+            <!-- Refactor 3 -->
+            <div class="space-y-2">
+              <p class="text-xs md:text-sm text-slate-700">
+                <strong>۳. تابع اختصاصی ذخیره‌سازی تصاویر:</strong>
+              </p>
+              <div
+                class="rounded-xl overflow-hidden border border-slate-800 bg-[var(--code-bg)] shadow-md text-left"
+                dir="ltr"
+              >
+                <div
+                  class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs text-slate-400 font-code"
+                >
+                  <span class="font-code text-slate-300"
+                    >python - Save Plot Helper</span
+                  >
+                  <button
+                    onclick="copyCode(this)"
+                    class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded font-vazir text-xs font-bold transition-all"
+                  >
+                    کپی کد
+                  </button>
+                </div>
+                <pre
+                  class="p-4 text-xs md:text-sm font-code text-slate-200 overflow-x-auto text-left"
+                  dir="ltr"
+                ><code class="text-left font-code" dir="ltr">def save_plot(name):
+    plt.tight_layout()
+    plt.savefig(PLOT_DIR / f"{name}.png", dpi=300)</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow space-y-4"
+        >
+          <div
+            class="flex justify-between items-center border-b border-slate-200 pb-3"
+          >
+            <h2
+              class="text-lg font-black text-slate-900 flex items-center gap-2"
+            >
+              <span class="w-3 h-3 rounded-full bg-teal-600"></span>
+              ۳. بررسی پاکسازی داده‌ها (19 / 20)
+            </h2>
+            <span
+              class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md"
+              >عالی</span
+            >
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-right text-xs md:text-sm">
+              <thead class="bg-slate-900 text-white">
+                <tr>
+                  <th class="p-3">مورد بررسی</th>
+                  <th class="p-3">ارزیابی</th>
+                  <th class="p-3">توضیحات اکچوئری</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 bg-white">
+                <tr>
+                  <td class="p-3 font-semibold">Missing Values</td>
+                  <td class="p-3">
+                    <span
+                      class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded"
+                      >عالی</span
+                    >
+                  </td>
+                  <td class="p-3 text-slate-600">
+                    شناسایی کامل و نبود مقدار گمشده بحرانی
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="p-3 font-semibold">Duplicates</td>
+                  <td class="p-3">
+                    <span
+                      class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded"
+                      >عالی</span
+                    >
+                  </td>
+                  <td class="p-3 text-slate-600">
+                    بررسی کامل همزادها در کلید اصلی بیمه‌نامه
+                  </td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold">Outliers</td>
+                  <td class="p-3">
+                    <span
+                      class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded"
+                      >عالی</span
+                    >
+                  </td>
+                  <td class="p-3 text-slate-600">
+                    نگهداشت داده‌های پرت ناگهانی (خسارت‌های سنگین خودِ موضوع
+                    ریسک هستند)
+                  </td>
+                </tr>
+                <tr class="bg-slate-50/50">
+                  <td class="p-3 font-semibold">Merge Validation</td>
+                  <td class="p-3">
+                    <span
+                      class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded"
+                      >عالی</span
+                    >
+                  </td>
+                  <td class="p-3 text-slate-600">
+                    کنترل لایه ادغام بدون مخدوش شدن داده‌ها
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            class="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs md:text-sm text-amber-900"
+          >
+            <strong>نکته پیشنهادی:</strong> قبل از تغییر نوع داده
+            <code>IDpol</code> به <code>int64</code>، بهتر است دستور
+            <code>assert freq["IDpol"].notna().all()</code> اضافه شود تا امنیت
+            اجرای کد تضمین گردد.
+          </div>
+        </section>
+
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow space-y-4"
+        >
+          <div
+            class="flex justify-between items-center border-b border-slate-200 pb-3"
+          >
+            <h2
+              class="text-lg font-black text-slate-900 flex items-center gap-2"
+            >
+              <span class="w-3 h-3 rounded-full bg-teal-600"></span>
+              ۴. بررسی تحلیل اکتشافی داده‌ها - EDA (18 / 20)
+            </h2>
+            <span
+              class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md"
+              >عالی</span
+            >
+          </div>
+
+          <div
+            class="grid grid-cols-2 md:grid-cols-6 gap-2 text-center text-xs font-bold"
+          >
+            <div
+              class="p-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200"
+            >
+              Histogram: عالی
+            </div>
+            <div
+              class="p-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200"
+            >
+              Countplot: عالی
+            </div>
+            <div
+              class="p-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200"
+            >
+              Scatter: عالی
+            </div>
+            <div
+              class="p-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200"
+            >
+              Pareto: عالی
+            </div>
+            <div
+              class="p-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200"
+            >
+              Barplot: عالی
+            </div>
+            <div
+              class="p-2 bg-rose-50 text-rose-700 rounded-lg border border-rose-200"
+            >
+              Boxplot: غایب
+            </div>
+          </div>
+
+          <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
+            به دلیل چولگی شدید (Right-skewness) متغیر هزینه
+            <code>ClaimAmount</code>، رسم Boxplot با مقیاس لگاریتمی توصیه می‌شد:
+          </p>
+
+          <div
+            class="rounded-xl overflow-hidden border border-slate-800 bg-[var(--code-bg)] shadow-md text-left"
+            dir="ltr"
+          >
+            <div
+              class="bg-slate-900 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs text-slate-400 font-code"
+            >
+              <span class="font-code text-slate-300"
+                >python - Logarithmic Boxplot</span
+              >
+              <button
+                onclick="copyCode(this)"
+                class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white rounded font-vazir text-xs font-bold transition-all"
+              >
+                کپی کد
+              </button>
+            </div>
+            <pre
+              class="p-4 text-xs md:text-sm font-code text-slate-200 overflow-x-auto text-left"
+              dir="ltr"
+            ><code class="text-left font-code" dir="ltr">sns.boxplot(x=np.log1p(sev["ClaimAmount"]))</code></pre>
+          </div>
+        </section>
+
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow space-y-6"
+        >
+          <div
+            class="flex justify-between items-center border-b border-slate-200 pb-3"
+          >
+            <h2
+              class="text-lg font-black text-slate-900 flex items-center gap-2"
+            >
+              <span class="w-3 h-3 rounded-full bg-teal-600"></span>
+              ۵ و ۶. بررسی مصورسازی، بینش‌ها و سلول‌های کلیدی
+            </h2>
+          </div>
+
+          <!-- Callouts for Visualization Errors -->
+          <div class="space-y-3">
+            <div
+              class="p-4 bg-rose-50 border-r-4 border-rose-600 rounded-xl text-xs md:text-sm text-rose-950"
+            >
+              <strong class="font-black text-rose-800 block mb-1"
+                >باگ مهم در نمودار منطقه (Region):</strong
+              >
+              در کد پردازش نوشته شده:
+              <code>region_cost = region_summary.sort_values(...)</code> اما در
+              ورودی نمودار متغیر <code>data = region_frequency</code> داده شده
+              است که منجر به نمایش اشتباه اطلاعات گشته است.
+            </div>
+
+            <div
+              class="p-4 bg-amber-50 border-r-4 border-amber-500 rounded-xl text-xs md:text-sm text-amber-950"
+            >
+              <strong class="font-black text-amber-800 block mb-1"
+                >اصلاح خط میانگین:</strong
+              >
+              خط <code>plt.axvline(total_claim_cost)</code> به جای میانگین
+              مناطق، مجموع پورتفوی را رسم کرده است. بهتر بود از
+              <code>region_summary["total_claim_cost"].mean()</code> استفاده
+              می‌شد.
+            </div>
+          </div>
+
+          <!-- Mathematical Formulas -->
+          <div
+            class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2"
+          >
+            <h3 class="font-bold text-xs md:text-sm text-slate-800">
+              فرمول‌های صحیح KPIهای محاسبه شده:
+            </h3>
+            <div class="flex flex-wrap gap-4 text-xs font-code dir-ltr">
+              <div
+                class="bg-white px-3 py-2 rounded-lg border border-slate-300"
+              >
+                Frequency = ClaimNb / Exposure
+              </div>
+              <div
+                class="bg-white px-3 py-2 rounded-lg border border-slate-300"
+              >
+                Severity = Total Claim Cost / Observed Claims
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 border border-slate-800 card-shadow space-y-4"
+        >
+          <h2 class="text-lg font-black text-amber-400 flex items-center gap-2">
+            <svg
+              class="w-5 h-5 text-amber-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              ></path>
+            </svg>
+            مواردی که احتمالاً استاد ایراد خواهد گرفت (به ترتیب اولویت)
+          </h2>
+
+          <ol
+            class="space-y-2.5 text-xs md:text-sm text-slate-300 list-decimal list-inside"
+          >
+            <li>
+              <strong class="text-amber-300">باگ متغیر Region:</strong> استفاده
+              از <code>region_frequency</code> به جای <code>region_cost</code>.
+            </li>
+            <li>
+              <strong class="text-amber-300"
+                >تکرار کدهای غیر ماژولار (DRY):</strong
+              >
+              عدم تعریف تابع کمکی برای 4 سگمنت تکراری.
+            </li>
+            <li>
+              <strong class="text-amber-300">مسیرهای هاردکد شده:</strong> عدم
+              امکان اجرای مستقیم روی سیستم‌های دیگر.
+            </li>
+            <li>
+              <strong class="text-amber-300">عدم وجود Boxplot:</strong> برای
+              نمایش بصری توزیع داده‌های چوله.
+            </li>
+            <li>
+              <strong class="text-amber-300">نبود پالت رنگی ثابت:</strong>
+              استفاده از رنگ‌های پیش‌فرض در تمام نمودارها.
+            </li>
+          </ol>
+        </section>
+
+        <section
+          class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 card-shadow space-y-4"
+        >
+          <h2
+            class="text-lg font-black text-slate-900 border-b border-slate-200 pb-3"
+          >
+            جمع‌بندی نهایی ارزیابی
+          </h2>
+          <p
+            class="text-xs md:text-sm text-slate-700 leading-relaxed text-justify"
+          >
+            این نوت‌بوک از دید یک <strong>Senior Data Analyst</strong> یک پروژه
+            بسیار قوی و استاندارد است. نقطه قوت اصلی آن در
+            <strong>منطق تحلیل داده‌های بیمه‌ای</strong> نهفته است؛ تشخیص درست
+            Grain داده، تجمیع Severity قبل از Merge، اعتبارسنجی فرآیند ادغام و
+            محاسبه دقیق KPIها بر مبنای Exposure، سطح بالای دانش دامنه‌ای (Domain
+            Knowledge) شما را نشان می‌دهد. نقاط ضعف موجود نیز صرفاً مرتبط با
+            <strong>مهندسی کد و ساختار بصری</strong> است که با اعمال اصلاحات
+            فوق، پروژه به کیفیتی ممتاز جهت ارائه دانشگاهی و رزومه حرفه‌ای در
+            GitHub خواهد رسید.
+          </p>
+        </section>
+
+        <section
+          class="bg-gradient-to-br from-emerald-900 via-emerald-850 to-teal-950 text-white rounded-2xl p-8 border-2 border-emerald-400 shadow-2xl text-center relative overflow-hidden"
+        >
+          <div
+            class="absolute -top-12 -left-12 w-40 h-40 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div class="relative z-10 space-y-4 max-w-2xl mx-auto">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 mb-1"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-black text-emerald-200">
+              تقدیر و تشکر ویژه
+            </h3>
+            <p
+              class="text-xs md:text-sm text-emerald-100 font-medium leading-relaxed"
+            >
+              با تشکر فراوان از دوست و همکار گرامی،
+              <strong class="text-amber-300 font-bold">علی خان‌بیگی</strong>
+              عزیز، بابت زحمات، پیاده‌سازی دقیق اکچوئری و تلاش ارزشمندی که برای
+              توسعه این نوت‌بوک تحلیل داده انجام داده است.
+            </p>
+
+            <div class="pt-4">
+              <!-- GitHub Button ONLY HERE AT THE VERY BOTTOM -->
+              <a
+                href="https://github.com/ali-khanbeigi/studybuild-insurance-claims-portfolio-risk-dashboard"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2.5 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs md:text-sm shadow-xl transition-all hover:scale-105 active:scale-95 border border-amber-300"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  />
+                </svg>
+                <span>مشاهده مخزن کامل پروژه در GitHub</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <button
+      id="backToTop"
+      onclick="scrollToTop()"
+      class="fixed bottom-6 left-6 w-11 h-11 bg-slate-900 text-amber-400 rounded-full flex items-center justify-center shadow-2xl opacity-0 invisible transition-all duration-300 border-2 border-amber-500/50 hover:bg-amber-500 hover:text-slate-950 z-50"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M5 15l7-7 7 7"
+        ></path>
+      </svg>
+    </button>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock =
+          button.parentElement.nextElementSibling.querySelector("code");
+        const codeText = codeBlock.innerText;
+
+        const textarea = document.createElement("textarea");
+        textarea.value = codeText;
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          document.execCommand("copy");
+          const originalText = button.textContent;
+          button.textContent = "کپی شد!";
+          button.classList.replace("bg-amber-600", "bg-emerald-600");
+
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.replace("bg-emerald-600", "bg-amber-600");
+          }, 2000);
+        } catch (err) {
+          console.error("Copy failed:", err);
+        } finally {
+          document.body.removeChild(textarea);
+        }
+      }
+
+      const backToTopBtn = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove("opacity-0", "invisible");
+          backToTopBtn.classList.add("opacity-100", "visible");
+        } else {
+          backToTopBtn.classList.remove("opacity-100", "visible");
+          backToTopBtn.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
