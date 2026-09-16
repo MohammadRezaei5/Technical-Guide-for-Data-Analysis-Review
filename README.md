@@ -4,6 +4,9 @@
 
 ---
 
+## 🌐 Live Demo
+
+🔗 [View Live Demo](https://mohammadrezaei5.github.io/Technical-Guide-for-Data-Analysis-Review/)
 ## ۱. ویژگی‌های کلیدی پروژه
 
 * **Single-File Architecture:** تمام کدها (HTML, CSS, JS) داخل یک فایل متمرکز `index.html` قرار دارند، بدون هیچ‌گونه وابستگی به کتابخانه‌ها یا فریم‌ورک‌های خارجی (No Dependencies).
